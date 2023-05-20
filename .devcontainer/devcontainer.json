@@ -11,7 +11,7 @@
 	// This can be used to network with other containers or with the host.
 	// "forwardPorts": [3000, 5432],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "npm i -g @loopback/cli && npm install",
+	"postCreateCommand": "npm i -g @loopback/cli && npm i -g @nestjs/cli && npx lerna bootstrap",
 	"customizations": {
 		"vscode": {
 			"extensions": [
