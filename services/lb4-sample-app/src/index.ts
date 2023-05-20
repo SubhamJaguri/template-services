@@ -1,8 +1,15 @@
 import {ApplicationConfig, LoopbackTemplateApplication} from './application';
-
+import * as dotenv from 'dotenv';
+import * as dotenvExt from 'dotenv-extended';
 export * from './application';
 
 export async function main(options: ApplicationConfig = {}) {
+  dotenv.config();
+  dotenvExt.load({
+    schema: '.env.example',
+    errorOnMissing: process.env.NODE_ENV !== 'test',
+    includeProcessEnv: true,
+  });
   const app = new LoopbackTemplateApplication(options);
   await app.boot();
   await app.start();
@@ -18,7 +25,7 @@ if (require.main === module) {
   // Run the application
   const config = {
     rest: {
-      port: +(process.env.PORT ?? 3000),
+      port: +(process.env.PORT ?? 3001),
       host: process.env.HOST,
       // The `gracePeriodForClose` provides a graceful close for http/https
       // servers with keep-alive clients. The default value is `Infinity`
