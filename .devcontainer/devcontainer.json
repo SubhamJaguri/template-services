@@ -16,7 +16,8 @@
 		"vscode": {
 			"extensions": [
 				"GitHub.copilot",
-				"GitHub.copilot-labs"
+				"GitHub.copilot-labs",
+				"esbenp.prettier-vscode"
 			]
 		}
 	}
