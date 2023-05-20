@@ -13,7 +13,7 @@ services:
     command: sleep infinity
 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:db
+    # network_mode: service:db
 
     networks:
       - bridge
@@ -30,6 +30,8 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
+    networks:
+      - bridge
 
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
@@ -43,6 +45,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
+    networks:
+      - bridge
 
   mongo:
     image: mongo
@@ -50,6 +54,8 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123456
+    networks:
+      - bridge
 
   mongo-express:
     image: mongo-express
@@ -62,6 +68,12 @@ services:
       ME_CONFIG_BASICAUTH_USERNAME: admin
       ME_CONFIG_BASICAUTH_PASSWORD: password
       ME_CONFIG_MONGODB_URL: mongodb://root:123456@mongo:27017/
+    networks:
+      - bridge
 
 volumes:
   postgres-data:
+
+networks:
+  bridge:
+    driver: bridge
