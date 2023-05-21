@@ -1,5 +1,6 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
-import {AnyObject, juggler} from '@loopback/repository';
+import {AnyObject} from '@loopback/repository';
+import {SequelizeDataSource} from 'loopback4-sequelize';
 
 const config = {
   name: 'pgdb',
@@ -18,7 +19,7 @@ const config = {
 // Learn more at https://loopback.io/doc/en/lb4/Life-cycle.html
 @lifeCycleObserver('datasource')
 export class PgdbDataSource
-  extends juggler.DataSource
+  extends SequelizeDataSource
   implements LifeCycleObserver
 {
   static dataSourceName = 'pgdb';
@@ -35,6 +36,9 @@ export class PgdbDataSource
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
       schema: process.env.DB_SCHEMA,
+      sequelizeOptions: {
+        logging: console.log,
+      },
     };
     Object.assign(dsConfig, configEnv);
     super(dsConfig);

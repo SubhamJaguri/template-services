@@ -12,6 +12,7 @@ export async function main(options: ApplicationConfig = {}) {
   });
   const app = new LoopbackTemplateApplication(options);
   await app.boot();
+  // await app.migrateSchema(['Admin', 'Files']);
   await app.start();
 
   const url = app.restServer.url;

@@ -63,6 +63,7 @@
     "dotenv": "^16.0.3",
     "dotenv-extended": "^2.9.0",
     "loopback-connector-postgresql": "^5.5.2",
+    "loopback4-sequelize": "^2.3.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
