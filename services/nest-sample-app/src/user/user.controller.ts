@@ -7,6 +7,13 @@ import { UserService } from './user.service';
   model: {
     type: User,
   },
+  query: {
+    join: {
+      posts: {
+        eager: false,
+      },
+    },
+  },
 })
 @Controller('user')
 export class UserController implements CrudController<User> {

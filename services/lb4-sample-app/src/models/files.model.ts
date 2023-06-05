@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Comment} from './comment.model';
 
 @model()
 export class Files extends Entity {
@@ -19,6 +20,9 @@ export class Files extends Entity {
     required: true,
   })
   adminId: number;
+
+  @hasMany(() => Comment, {keyTo: 'fileId'})
+  comments: Comment[];
 
   constructor(data?: Partial<Files>) {
     super(data);

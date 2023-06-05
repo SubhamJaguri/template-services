@@ -1,7 +1,9 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model()
-export class Post extends Entity {
+@model({
+  name: 'comment',
+})
+export class Comment extends Entity {
   @property({
     type: 'number',
     id: true,
@@ -11,23 +13,28 @@ export class Post extends Entity {
 
   @property({
     type: 'string',
-    required: true,
   })
-  title: string;
+  text?: string;
 
   @property({
-    type: 'string',
+    type: 'number',
     required: true,
   })
-  userId: string;
+  userId: number;
 
-  constructor(data?: Partial<Post>) {
+  @property({
+    type: 'number',
+    required: true,
+  })
+  fileId: number;
+
+  constructor(data?: Partial<Comment>) {
     super(data);
   }
 }
 
-export interface PostRelations {
+export interface CommentRelations {
   // describe navigational properties here
 }
 
-export type PostWithRelations = Post & PostRelations;
+export type CommentWithRelations = Comment & CommentRelations;
