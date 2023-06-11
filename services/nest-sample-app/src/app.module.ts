@@ -19,7 +19,7 @@ import { Post } from './post/post.enitity';
       schema: 'main',
       entities: [User, Post],
       synchronize: true,
-      logging: true,
+      logging: false,
     }),
     UserModule,
     PostModule,
