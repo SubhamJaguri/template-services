@@ -28,7 +28,9 @@ module.exports = {
     {name: 'ci-cd'},
     {name: 'deps'},
     {name: 'migrations'},
-    {name: 'lb4-sample-app'},
+    {name: 'expo-sample-app'},
+    {name: 'nest-sample-app'},
+    {name: 'next-sample-app'},
   ],
 
   appendBranchNameToCommitMessage: false,

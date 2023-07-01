@@ -1,5 +1,9 @@
 {
-  "packages": ["packages/*", "services/*", "facades/*"],
+  "packages": [
+    "packages/*",
+    "services/*",
+    "facades/*"
+  ],
   "command": {
     "bootstrap": {
       "concurrency": 4,
@@ -18,6 +22,11 @@
       "yes": true
     }
   },
-  "ignoreChanges": ["**/__fixtures__/**", "**/__tests__/**", "**/*.md"],
-  "version": "independent"
+  "ignoreChanges": [
+    "**/__fixtures__/**",
+    "**/__tests__/**",
+    "**/*.md"
+  ],
+  "version": "independent",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
